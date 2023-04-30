@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'salon.apps.SalonConfig'
+    'salon.apps.SalonConfig',
+    'user.apps.UserConfig'
+    'adminpanel.apps.AdminpanelConfig'
 ]
 
 MIDDLEWARE = [
