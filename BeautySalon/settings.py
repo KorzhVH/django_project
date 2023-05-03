@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'salon.apps.SalonConfig',
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
     'adminpanel.apps.AdminpanelConfig'
 ]
 
