@@ -10,12 +10,17 @@ class Master(models.Model):
         (1, 'Junior'),
         (2, 'Senior')
     )
-
+    status_choice = (
+        (1, 'Active'),
+        (2, 'Day off'),
+        (3, 'Sick leave'),
+        (9, "Fired")
+    )
     name = models.CharField(max_length=100)
-    rank = models.IntegerField(default=1)
+    rank = models.IntegerField(default=1, choices=RANK_CHOICES)
     phone = models.IntegerField()
     services = models.ManyToManyField(Service)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=True, choices=status_choice)
 
 
 class Booking(models.Model):

@@ -3,8 +3,10 @@ from django.urls import path
 import adminpanel.views
 
 urlpatterns = [
-    path('panel', adminpanel.views.panel_handler),
-    path('panel/booking', adminpanel.views.panel_booking_handler),
-    path('panel/specialist', adminpanel.views.panel_specialist_handler),
-    path('panel/specialist/<int:specialist_id>', adminpanel.views.panel_specialist_id_handler)
-]
+    path('adminpanel', adminpanel.views.main),
+    path('adminpanel/masters', adminpanel.views.masters),
+    path('adminpanel/masters/<int:master_id>', adminpanel.views.one_master),
+    path('adminpanel/services', adminpanel.views.services),
+    path('adminpanel/services/<int:service_id>', adminpanel.views.one_service)
+    ]
+
