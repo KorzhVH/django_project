@@ -5,6 +5,10 @@
     <title>Services page</title>
 </head>
 <body>
+    {% for service in all_services %}
+        <p>{{service.name} {service.required_time} {service.price}}></p>
+    {% endfor %}
+
     <form method="post">
         {% csrf_token%}
         <input type="text" value="name" placeholder="Name">
