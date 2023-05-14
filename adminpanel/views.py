@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from salon.models import Service, Schedule, Master
+from salon.models import Service
 
 
 def main(request):
@@ -23,8 +23,8 @@ def services(request):
             price=request.POST['price']
         )
         service.save()
-    services = Service.objects.all()
-    return render(request, 'adminpanel/services.html', {'services': services})
+    all_services = Service.objects.all()
+    return render(request, 'adminpanel/services.html', {'all_services': all_services})
 
 def one_service(request, service_id):
     return HttpResponse()
