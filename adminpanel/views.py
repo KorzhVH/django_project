@@ -24,7 +24,7 @@ def services(request):
         )
         service.save()
     all_services = Service.objects.all()
-    return render(request, 'adminpanel/services.html', {'all_services': all_services})
+    return render(request, 'services.html', {'all_services': all_services})
 
 def one_service(request, service_id):
     return HttpResponse()
