@@ -34,7 +34,7 @@ class Master(models.Model):
 class Booking(models.Model):
     master = models.ForeignKey(Master, on_delete=models.CASCADE)
     service = models.ManyToManyField(Service)
-    client = models.IntegerField
+    client = models.IntegerField()
     date = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=False)
 
