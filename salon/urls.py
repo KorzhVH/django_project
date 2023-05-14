@@ -8,6 +8,5 @@ urlpatterns = [
     path('services/<int:service_id>', salon.views.services_id_handler),
     path('specialist', salon.views.specialists_handler),
     path('specialist/<int:service_id>', salon.views.specialists_id_handler),
-    path('booking', salon.views.booking_handler),
-
+    path('booking', salon.views.booking_handler)
 ]

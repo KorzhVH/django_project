@@ -1,20 +1,16 @@
 import datetime
 
 from django.http import HttpResponse
-from django.shortcuts import render
-from salon.models import Service, Master, Booking, Schedule
-
-
-# these handle requests. Swap return message for templates later
+from salon.models import Service, Master, Schedule
 def root_handler(request):
     return HttpResponse("Temp message for root handler")
 
 
 def services_handler(request):
-    # schedules = Schedule.objects.filter(date__gte=datetime.date.today(),
-    #                                     date__lte=datetime.date.today() + datetime.timedelta(days=7)).all()
-    # master = Master.objects.filter(status=True, id_in=schedules).all()
-    # service = Service.objects.filter(id_in=master).distinct()
+    schedules = Schedule.objects.filter(date__gte=datetime.date.today(),
+                                        date__lte=datetime.date.today() + datetime.timedelta(days=7)).all()
+    master = Master.objects.filter(status=True, id_in=schedules).all()
+    service = Service.objects.filter(id_in=master).distinct()
     return HttpResponse("Temp message for services")
 
 

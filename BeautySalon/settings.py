@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'salon.apps.SalonConfig',
     'user.apps.UserConfig',
-    'adminpanel.apps.AdminpanelConfig'
+    'adminpanel.apps.adminpanelConfig'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'BeautySalon.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        'DIRS': [BASE_DIR/'adminpanel'/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

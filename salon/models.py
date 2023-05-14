@@ -1,9 +1,14 @@
 from django.db import models
 
+
 class Service(models.Model):
     name = models.CharField(max_length=100)
     time_required = models.CharField(max_length=100)
     price = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.name}, {self.time_required}, {self.price}'
+
 
 class Master(models.Model):
     RANK_CHOICES = (
@@ -22,6 +27,9 @@ class Master(models.Model):
     services = models.ManyToManyField(Service)
     status = models.BooleanField(default=True, choices=status_choice)
 
+    def __str__(self):
+        return self.name
+
 
 class Booking(models.Model):
     master = models.ForeignKey(Master, on_delete=models.CASCADE)
@@ -32,6 +40,7 @@ class Booking(models.Model):
 
     def __str__(self):
         return f'{self.master}, {self.service}, {self.client}, {self.date}, {self.status}'
+
 
 class Schedule(models.Model):
     master = models.ForeignKey(Master, on_delete=models.CASCADE)
