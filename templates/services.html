@@ -6,7 +6,7 @@
 </head>
 <body>
     {% for service in all_services %}
-        <p>{{service.name} {{service.required_time}} {{service.price}}></p>
+        <p>{{service.name}} {{service.required_time}} {{service.price}}></p>
     {% endfor %}
 
     <form method="post">
