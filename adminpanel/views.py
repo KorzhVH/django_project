@@ -16,9 +16,9 @@ def one_master(request, master_id):
 
 
 def services(request):
-    if request.method == 'post':
+    if request.method == 'POST':
         service = Service(
-            name=request.POST['name'],
+            service_name=request.POST['service_name'],
             required_time=request.POST['required_time'],
             price=request.POST['price']
         )

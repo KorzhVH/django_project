@@ -2,12 +2,12 @@ from django.db import models
 
 
 class Service(models.Model):
-    name = models.CharField(max_length=100)
+    service_name = models.CharField(max_length=100)
     required_time = models.CharField(max_length=100)
     price = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return self.service_name
 
 
 class Master(models.Model):
