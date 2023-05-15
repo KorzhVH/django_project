@@ -14,7 +14,7 @@
             <option value="2">Senior</option>
         </select>
         {%for service in services%}
-            <input type="checkbox" value="{{service.id}}"> {{service.service_name}}
+            <input type="checkbox" name="services" value="{{service.id}}"> {{service.service_name}}
         {% endfor %}
         <input type="submit" name="Submit">
     </form>
