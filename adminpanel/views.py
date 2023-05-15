@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from salon.models import Service
+from salon.models import Service, Master, Schedule
 
 
 def main(request):
@@ -8,7 +8,18 @@ def main(request):
 
 
 def masters(request):
-    return HttpResponse()
+    if request.method == 'POST':
+        master = Master(
+            name=request.POST['name'],
+            rank=request.POST['price'],
+            phone=request.POST['phone'],
+            services=Service.objects.get(id=request.POST['services']),
+            status=2
+        )
+        master.save()
+    all_masters = Master.objects.all()
+    services = Service.objects.all()
+    return render(request, 'all_masters.html', {'all_masters': all_masters, 'service':services})
 
 
 def one_master(request, master_id):
@@ -27,4 +38,5 @@ def services(request):
     return render(request, 'services.html', {'all_services': all_services})
 
 def one_service(request, service_id):
-    return HttpResponse()
+    service = Service.objects.filter(service=service_id)
+    return render(request, 'one_service.html', {'title':service.service_name, 'service':service})

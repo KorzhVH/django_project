@@ -22,10 +22,10 @@ class Master(models.Model):
         (9, "Fired")
     )
     name = models.CharField(max_length=100)
-    rank = models.IntegerField(default=1, choices=RANK_CHOICES)
+    rank = models.IntegerField(choices=RANK_CHOICES)
     phone = models.IntegerField()
     services = models.ManyToManyField(Service)
-    status = models.BooleanField(default=True, choices=status_choice)
+    status = models.BooleanField(default=2, choices=status_choice)
 
     def __str__(self):
         return self.name

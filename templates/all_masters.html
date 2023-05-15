@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Masters Page</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token%}
+        <input type="text" name="name" placeholder="Name">
+        <input type="number" name="phone" placeholder="Phone">
+        <select name="rank">
+            <option value="1">Junior</option>
+            <option value="2">Senior</option>
+        </select>
+        {%for service in services%}
+            <input type="checkbox" value="{{service.id}}"> {{service.service_name}}
+        {% endfor %}
+        <input type="submit" name="Submit">
+    </form>
+</body>
+</html>
