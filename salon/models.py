@@ -25,7 +25,7 @@ class Master(models.Model):
     rank = models.IntegerField(choices=RANK_CHOICES)
     phone = models.IntegerField()
     services = models.ManyToManyField(Service)
-    status = models.BooleanField(default=2, choices=status_choice)
+    status = models.IntegerField(default=2, choices=status_choice)
 
     def __str__(self):
         return self.name

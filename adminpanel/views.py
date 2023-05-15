@@ -11,15 +11,21 @@ def masters(request):
     if request.method == 'POST':
         master = Master(
             name=request.POST['name'],
-            rank=request.POST['price'],
+            rank=request.POST['rank'],
             phone=request.POST['phone'],
-            services=Service.objects.get(id=request.POST['services']),
+            # services=Service.objects.get(id=request.POST['service']),
             status=2
         )
         master.save()
+
+        services_ids = [value for key, value in request.POST.items() if key.startswith('service')]
+        for service_id in services_ids:
+            service = Service.objects.get(id=service_id)
+            master.services.add(service)
+        master.save()
     all_masters = Master.objects.all()
     services = Service.objects.all()
-    return render(request, 'all_masters.html', {'all_masters': all_masters, 'service':services})
+    return render(request, 'all_masters.html', {'all_masters': all_masters, 'services':services})
 
 
 def one_master(request, master_id):

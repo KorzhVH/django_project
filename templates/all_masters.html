@@ -5,17 +5,23 @@
     <title>Masters Page</title>
 </head>
 <body>
+    {%for master in all_masters%}
+        {{master.name}} {{master.phone}} {{master.status}} {{master.rank}}
+        {%for service in all_services%}
+            {{master.service_name}}
+        {% endfor %}
+    {% endfor %}
     <form method="post">
         {% csrf_token%}
-        <input type="text" name="name" placeholder="Name">
-        <input type="number" name="phone" placeholder="Phone">
+        <input type="text" name="name" placeholder="Name"><br>
+        <input type="number" name="phone" placeholder="Phone"><br>
         <select name="rank">
             <option value="1">Junior</option>
             <option value="2">Senior</option>
-        </select>
+        </select><br>
         {%for service in services%}
-            <input type="checkbox" name="services" value="{{service.id}}"> {{service.service_name}}
-        {% endfor %}
+            <input type="checkbox" name="service_{{service.id}}" value="{{service.id}}"> {{service.service_name}}
+        {% endfor %}<br>
         <input type="submit" name="Submit">
     </form>
 </body>
