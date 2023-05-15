@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{title}}</title>
+
 </head>
 <body>
+    <h1>{{title}}'s Schedule</h1>
+    {%for work in work_schedule%}
+        <p>{{work.time_start}} - {{work.time_end}}</p>
+    {%endfor%}
+
+    <form method = "post">
+        {% csrf_token %}
+        <input type="datetime-local" name="begin-time" placeholder="Job to be started"><br>
+        <input type="datetime-local" name="end-time" placeholder="Job to be finished"><br>
+        <input type="submit" value="Submit">
+
+    </form>
+
 
 </body>
 </html>

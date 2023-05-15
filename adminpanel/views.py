@@ -13,8 +13,7 @@ def masters(request):
             name=request.POST['name'],
             rank=request.POST['rank'],
             phone=request.POST['phone'],
-            # services=Service.objects.get(id=request.POST['service']),
-            status=2
+            status=request.POST['status']
         )
         master.save()
 
@@ -29,7 +28,17 @@ def masters(request):
 
 
 def one_master(request, master_id):
-    return HttpResponse()
+    if request.method == 'POST':
+        work_schedule = Schedule(
+            master=Master.objects.get(id=master_id),
+            time_start=request.POST['begin-time'],
+            time_end=request.POST['end-time']
+        )
+        work_schedule.save()
+
+    master = Master.objects.get(id=master_id)
+    work_schedule = Schedule.objects.filter(master=master_id).all()
+    return render(request, 'master.html', {'title':master.name, 'work_schedule':work_schedule})
 
 
 def services(request):

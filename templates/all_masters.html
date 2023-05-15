@@ -19,6 +19,12 @@
             <option value="1">Junior</option>
             <option value="2">Senior</option>
         </select><br>
+        <select name="status">
+            <option value="1">Active</option>
+            <option value="2">Day off</option>
+            <option value="3">Sick leave</option>
+            <option value="9">Fired</option>
+        </select><br>
         {%for service in services%}
             <input type="checkbox" name="service_{{service.id}}" value="{{service.id}}"> {{service.service_name}}
         {% endfor %}<br>

@@ -39,14 +39,13 @@ class Booking(models.Model):
     status = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.master}, {self.service}, {self.client}, {self.date}, {self.status}'
+        return {self.master}, {self.service}, {self.client}, {self.date}, {self.status}
 
 
 class Schedule(models.Model):
     master = models.ForeignKey(Master, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now=True)
     time_start = models.DateTimeField()
     time_end = models.DateTimeField()
 
     def __str__(self):
-        return f'{self.master}, {self.date}, {self.time_start}, {self.time_end}'
+        return {self.master},  {self.time_start}, {self.time_end}
